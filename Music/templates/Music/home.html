@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>MUSIC APPLICATION</title> 
+    </head>
+
+    <body>
+
+        <h1> Artists </h1>
+        
+        {% for art in art_list %}
+        <div class='post'>
+            <a href ="{% url 'album_list' pk=art.pk %}">{{art.username}}</a>
+        </div>
+        {% endfor %}
+    </body>
+</html>

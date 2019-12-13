@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>MUSIC APPLICATION</title> 
+    </head>
+
+    <body>
+
+        <h1> {{artist}} </h1>
+
+        {% if artist.feat %}
+        <p>Featured Tracks</p>
+        {% endif %}
+        {% for j in artist.feat.all %}
+            <p>{{j}}</p>
+        {% endfor %}
+        
+        {% for i in artist.album.all %}
+            <a href="{% url 'track_list' pk=i.pk %}">{{i}}</a>
+        {% endfor %}
+
+    </body>
+</html>

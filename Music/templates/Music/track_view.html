@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>MUSIC APPLICATION</title> 
+    </head>
+
+    <body>
+
+        <h1> {{album}} </h1>
+        
+        {% for i in album.track.all %}
+            <p>{{i}}</p>
+        {% endfor %}
+
+    </body>
+</html>
