@@ -7,8 +7,8 @@
 
         <h1> {{artist}} </h1>
 
-        {% if artist.feat %}
-        <p>Featured Tracks</p>
+        {% if artist.feat.all %}
+            <p>Featured Tracks</p>
         {% endif %}
         {% for j in artist.feat.all %}
             <p>{{j}}</p>

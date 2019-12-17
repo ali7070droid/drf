@@ -12,7 +12,6 @@ from django.contrib.auth.models import User
 class Album(models.Model):
     album_name=models.CharField(max_length=100)
     artist = models.ForeignKey(User,related_name='album', on_delete=models.CASCADE)
-    orderA=models.IntegerField()
 
     def __str__(self):
         return '%s' % (self.album_name)
@@ -22,11 +21,9 @@ class Track(models.Model):
     title=models.CharField(max_length=100)
     duration=models.IntegerField()
     album = models.ForeignKey(Album, related_name='track', on_delete=models.CASCADE)
-    artist_feat = models.ManyToManyField(User, related_name='feat' ,blank=True, null=True)
-    orderT=models.IntegerField()
+    artist_feat = models.ManyToManyField(User, related_name='feat' ,blank=True, null=False)
 
-    class Meta:
-        ordering=['orderT']
+
 
     def __str__(self):
         #if artist_feat:

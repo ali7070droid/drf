@@ -12,5 +12,11 @@
             <a href ="{% url 'album_list' pk=art.pk %}">{{art.username}}</a>
         </div>
         {% endfor %}
+        <hr>
+
+
+        <a href="{% url 'manage_album' %}">Manage my Albums</a>
+
+        <a href="{% url 'manage_track' %}">Manage my Tracks</a>
     </body>
 </html>

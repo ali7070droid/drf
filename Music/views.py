@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from .models import Album, Track
 from rest_framework import generics
 from .serializers import ArtistSerializer
+from Music.forms import AlbumForm, TrackForm
 # Create your views here.
 
 
@@ -18,6 +19,25 @@ def album_list(request,pk):
 def track_list(request, pk):
     album = get_object_or_404(Album,pk=pk)
     return render(request,'Music/track_view.html',{'album':album})
+def manage_album(request):
+    if request.POST:
+        form = AlbumForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('Artist_list')
+    else:
+        form = AlbumForm()
+    return render(request, 'Music/manage_albums.html', {'form': form})
+
+def manage_track(request):
+    if request.POST:
+        form = TrackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('track_list')
+    else:
+        form = TrackForm()
+    return render(request, 'Music/manage_track.html', {'form':form})
 
 class ArtistList(generics.ListCreateAPIView):
     queryset = User.objects.all()
